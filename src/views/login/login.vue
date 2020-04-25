@@ -27,6 +27,7 @@
     <div class="loginBtn">
       <van-button type="info"
                   size="large"
+                  :loading="loading"
                   @click="login">登录</van-button>
     </div>
 
@@ -47,21 +48,24 @@ export default {
       result: {
         mobile: '',
         code: ''
-      }
+      },
+      loading: false // 加载效果
     }
   },
   methods: {
+    // 登录按钮
     async login () {
-      if (this.checkData()) {
-        var res = await userlogin(this.form)
-        var result = res.data.data
-        this.$store.commit('setUserInfo', result)
-        this.$router.push('/home')
-        // .then(res => {
-        //   var result = res.data.data
-        //   window.console.log(result)
-        //   this.$router.push('/home')
-        // })
+      if (this.checkData()) { // 结果为true的处理
+        this.loading = true // 开启加载效果
+        try {
+          var res = await userlogin(this.form)
+          // 用户信息存入localStorage 和 vuex 中
+          this.$store.commit('setUserInfo', res.data.data)
+          this.$router.push('/home')
+        } catch (error) {
+          this.$toast.fail('登录失败')
+        }
+        this.loading = false
       }
     },
     // 校验方法封装

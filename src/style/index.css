@@ -1,24 +1,30 @@
-@font-face {font-family: "iconfont";
-  src: url('//at.alicdn.com/t/font_1775310_cnefvn703f.eot?t=1587615668149'); /* IE9 */
-  src: url('//at.alicdn.com/t/font_1775310_cnefvn703f.eot?t=1587615668149#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMYAAsAAAAABvQAAALKAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqBXIFRATYCJAMMCwgABCAFhG0HNxsYBsgusG3Yk7IZ2AYuBhIBAHqDD57/9mv3vZk/i7hFundIYhKJuxE8ZPFQRUP108UTef7cT1+R7SB6RCiL+UDppRmSm7DdeWIhx44UsNtVyCVAAG4DBJiZT06AeJ/ncnotywKZHyiXuSYd9QKMAwpob4wCDKxAEvRUxGt2kfchQAwFcuha23pGwIrFXiaAzIl8GKyFCBYr5qMQXMNei2wTEKUregfAVvR9+YKirKAEBntt+1pj0HD4lcyyX4a+gCAKAg4HgAHqABZkoDHTxYCILAMxGmN3ucMi6FJx/08kMVTO+cMDRUAcdm0cAFUsq/AKniTTSpA9dZcBwPEZVQ2ANjYzzbsbNCnamB095zw9yzMnr0tdF7eZlq2L5YPtyOnacfioM84UP6l7fh6/fxzFsX+Mho9i3KsnYoicVjpcsvPQdveAsk5iHQ0pY5q+N3Y0vuvTbMplOFnyBY5zf3MTY8idanBpOSQQBsKkmLZ7p/zU71nG/FGzN5lGHQP9R0d40AFDAPAMYMYA/GbM4PnDv+Hvc6A66Kn5tzosAC+XFafM4xmHVxGFgij9n9KBPdaQ21ZjNYknsXyGkntzKUAk+fHZgRSv0w3p9+wSogpSEUqIfBiiKKNYRh0CYqmHI4oGxFCr/XAsqSgDYqOBGhsEIckBlAQuYUhyT7GMFwRk+IMjKQNi6ChwZiwVifZmisMMx1BkBolRonGundnj+iHMTyhhmpdH7DFME2IcFeYVlPPtWMN0iQ2JSb6IMQ5xlKiojR7DikJQnBIJR1mewFi8Kj+fa3pRXpSoYKcFhYUxWAwSMQMRRREaLhjM2CufH4LxJijCaAepLjgGoxLE0ZFCeQoGUNo12iDSozyTMIlXhGE4CIciVEgbzcIUCgKJN8+SYFFMHmFCKq5KvtOPG6rJ216n/t8hIAb7SiMqRixuekAgGjYqJCoDAAAA') format('woff2'),
-  url('//at.alicdn.com/t/font_1775310_cnefvn703f.woff?t=1587615668149') format('woff'),
-  url('//at.alicdn.com/t/font_1775310_cnefvn703f.ttf?t=1587615668149') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('//at.alicdn.com/t/font_1775310_cnefvn703f.svg?t=1587615668149#iconfont') format('svg'); /* iOS 4.1- */
+@font-face {
+  font-family:"iconfont";
+  src: url('//at.alicdn.com/t/font_1775310_y9ed6b0wfym.eot?t=1587801330820');
+  /* IE9 */
+  src: url('//at.alicdn.com/t/font_1775310_y9ed6b0wfym.eot?t=1587801330820#iefix') format('embedded-opentype'),
+  /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQsAAsAAAAACMgAAAPeAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqEZIN/ATYCJAMUCwwABCAFhG0HSxuOBxEVnP3IfiTYtnBW1qvzjS6qqEn6JgiITb0XKIGQdmaeTk3pRM3SAAEEdv3+L/2UrgEZkK0YrZruW+7b7bNn3qQdj3GIAvgB/8WhauZ5wOYDBShqcw8MYDhAARprtKVSRLu1YFWvgng2E/4JOg4B2CQmI6J4yfLVsdBo4wQg2rdp1QQrpkSX4ASWxMxZqhETMbDkKHkWmOC+v3hDdmGBxFBoJ1VuWaI5wee8iFReyKO+GoLXnx7gVoECMgIaRNdcY3uUH8yIwlZ+TxMEbCwk8jnPcz1v+yIyFELlrkhs6yHQyH7+ecJEE/qBDYY0PMdkhqJckCMhags9inNjgX0uRxkA2IALbAXeoklT9tlNo5AqdiCQ0I8HRPh0PF+7Jo3rTo853Z66EumtcsbEmRan2YwZc2bHrm0/vF7r+o0mzpNr1a9d7fv4ap2b1yK9btS9c71xv4jRK9FV/7Qr/Ea49o+OWb1QLXfMGmFErW4eNXv56KUzmbVqzJqm3qxlY1bMEbNXj17ZIe9B/fxb9yY05x3K5e44kiRs/v7ey1dHrRmzyltZy2+4rcSNG7WuXauBs2wV0ltpB0avFipqTZqRtl18veTRq0kH58+5OecWNixbnFUdjHAPB8zrdNLNy7rd7F7fzj715esk0VlxxfphfthwypJJfNKhBbKwH8mpMVIcTiPOvzEdyz3yO7eEBo22Wa7pUL3SCvIqCEQLBM1lSYNwEAIjFyy4N216jP9PGxRxt7eP3367q1alXVU4RoQq8eGk39K8ZvCDTigfRtaMfCgT6g+uWt05lFXXrR87XutCgp1dZaNBXmMBmk3zY7uWiugVvWt0U1kzupsbMS9hV6dypU2bsKNDbyD0I+RpnxoCoVdqoQKEuQrVPPxJ1VThn8N5lNtRoVqj8ILfLEcDcPu0+xk17ZnPVERt1sMX6N4RP7gqR1MaWqbnM12WWYIADIIRNxKec80jt0bnfj/SWJdTL7BiLA4kYSQChUVKpMZmBAOHnGBiUQT0tgz2qx0xiCExH5Deh4AQ4QtSwAFQIvyQGvsHhtj+wRTREGw1W27pSF2xWAsiRUrxm4qEW2NodOFlnpDd60iiHBd/g9jCQ4HrJyN7tJA+ZthHFqoaMsIN7chpqGumTrhEom6u2q08z+S9kptw01soRkBEQYrE3kghwVrGbq0Wqbc/gcxdLSIlDRXKGxBW0TkJuPwayL2wrdVwLi+xHjIhpQxiCNYgOxIPtRqrwi5/UAkSypW38HdWPL2ZqSt0xxc317gNsGn7GEmhhBaGMDFepOD5/u/jKKxOikPOLUY1J1WvBwAA') format('woff2'), url('//at.alicdn.com/t/font_1775310_y9ed6b0wfym.woff?t=1587801330820') format('woff'), url('//at.alicdn.com/t/font_1775310_y9ed6b0wfym.ttf?t=1587801330820') format('truetype'),
+  /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1775310_y9ed6b0wfym.svg?t=1587801330820#iconfont') format('svg');
+  /* iOS 4.1- */
 }
-
 .iconfont {
-  font-family: "iconfont" !important;
+  font-family:"iconfont" !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.icon-iPhone:before {
-  content: "\e66a";
+.icon-video:before {
+  content:"\e741";
 }
-
+.icon-icon-test:before {
+  content:"\e635";
+}
+.icon-iPhone:before {
+  content:"\e66a";
+}
 .icon-lock:before {
-  content: "\e600";
+  content:"\e600";
 }

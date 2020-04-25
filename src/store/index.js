@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import { setLoacl, getLoacl } from '@/utils/mylocal.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userInfo: ''
+    userInfo: getLoacl('userInfo') || {}
   },
   mutations: {
-    setUserInfo: function (state, data) {
-      state.userInfo = data
+    setUserInfo: function (state, payload) {
+      state.userInfo = payload
+      setLoacl('userInfo', payload)
     }
   }
 })
