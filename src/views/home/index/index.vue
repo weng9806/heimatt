@@ -12,10 +12,31 @@
                     :finished="item.finished"
                     finished-text="-- 我是有底线的 --"
                     @load="onLoad">
-            <van-cell style="height:80px"
-                      v-for="(item,index) in item.articleList"
-                      :key="index"
-                      :title="item.title" />
+            <van-cell v-for="(articleitem,articleindex) in item.articleList"
+                      :key="articleindex">
+              <template #title>
+                <h3>{{articleitem.title}}</h3>
+                <van-grid v-if="articleitem.cover.images.lenght!=0"
+                          :border="false"
+                          :column-num="3">
+                  <van-grid-item v-for="(imgitem,imgindex) in articleitem.cover.images"
+                                 :key="imgindex">
+                    <van-image lazy-load
+                               :src="imgitem" />
+                  </van-grid-item>
+                </van-grid>
+                <div class="box">
+                  <div class="left">
+                    <span>{{ articleitem.aut_name }}</span>
+                    <span>{{ articleitem.comm_count }} 评论</span>
+                    <span>{{articleitem.pubdate}}</span>
+                  </div>
+                  <div class="right">
+                    <van-icon name="cross" />
+                  </div>
+                </div>
+              </template>
+            </van-cell>
           </van-list>
         </van-pull-refresh>
       </van-tab>
@@ -25,12 +46,14 @@
       </div>
     </van-tabs>
     <Channels ref="myChannels"
-              :channelList="channelList" />
+              :channelList="channelList"
+              :active="active"
+              @update:active="v=>active=v" />
   </div>
 </template>
 
 <script>
-import { getChannelData, getarticleList } from '@/api/index'
+import { getChannelData, getArticleList } from '@/api/index'
 import { getLoacl } from '@/utils/mylocal.js'
 import Channels from './channels.vue'
 export default {
@@ -54,8 +77,7 @@ export default {
     async onLoad () {
       var currentChannel = this.channelList[this.active] // 当前频道
       var id = currentChannel.id // 当前频道id
-      var res = await getarticleList(id) // 获取当前频道 文章列表
-      window.console.log(res)
+      var res = await getArticleList(id) // 获取当前频道 文章列表
       // 这里需要拼接文章列表数组，不然会一直请求数据 渲染页面
       currentChannel.articleList = [...currentChannel.articleList, ...res.data.data.results]
       currentChannel.loading = false
@@ -90,7 +112,6 @@ export default {
       }
       // 给不同的频道下设置不同的数据源
       this.addOtherProp()
-      window.console.log(this.channelList)
     },
     // 给频道数据源添加额外的属性
     addOtherProp () {
@@ -141,6 +162,22 @@ export default {
     text-align: center;
     line-height: 44px;
     font-weight: bold;
+  }
+  .box {
+    .left {
+      float: left;
+      font-size: 12px;
+      color: #b4b4b4;
+      span {
+        margin-right: 10px;
+      }
+    }
+    .right {
+      float: right;
+      margin: 0 5px;
+      font-size: 12px;
+      color: #b4b4b4;
+    }
   }
 }
 </style>

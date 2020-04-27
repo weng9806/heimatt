@@ -6,10 +6,19 @@ import router from './router'
 import store from './store'
 // 导入css样式
 import '@/style/index.css'
+// 导入dayjs
+import dayjs from 'dayjs'
 
-import Vant from 'vant'
+// 导入vant Lazyload懒加载
+import Vant, { Lazyload } from 'vant'
 import 'vant/lib/index.css'
 Vue.use(Vant)
+Vue.use(Lazyload)
+
+var relativeTime = require('dayjs/plugin/relativeTime') // 转换为相对时间插件
+dayjs.extend(relativeTime)
+require('dayjs/locale/zh-cn') // 转换为中文
+dayjs.locale('zh-cn') // 全局使用
 
 Vue.config.productionTip = false
 

@@ -8,7 +8,25 @@ export function getChannelData (params) {
   })
 }
 
-export function getarticleList (id) {
+export function getAllChannelData (params) {
+  return instance({
+    url: '/app/v1_0/channels',
+    method: 'get',
+    params
+  })
+}
+
+export function resetChannelList (channels) {
+  return instance({
+    url: '/app/v1_0/user/channels',
+    method: 'PUT',
+    data: {
+      channels: channels
+    }
+  })
+}
+
+export function getArticleList (id) {
   return instance({
     url: '/app/v1_1/articles',
     method: 'get',
