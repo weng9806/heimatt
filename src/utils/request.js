@@ -1,8 +1,16 @@
 import axios from 'axios'
 import store from '@/store'
+import jsonbig from 'json-bigint'
 
 const instance = axios.create({
-  baseURL: 'http://ttapi.research.itcast.cn'
+  baseURL: 'http://ttapi.research.itcast.cn',
+  transformResponse: [function (data) {
+    try {
+      return jsonbig.parse(data)
+    } catch (error) {
+      return data
+    }
+  }]
 })
 
 // 添加请求拦截器

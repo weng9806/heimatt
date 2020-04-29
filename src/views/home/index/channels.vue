@@ -57,6 +57,13 @@ import { getAllChannelData, resetChannelList } from '@/api/index.js'
 import { setLoacl } from '@/utils/mylocal.js'
 export default {
   props: ['channelList', 'active'],
+  watch: {
+    show (nVal) {
+      if (nVal === false) {
+        this.isEdit = false
+      }
+    }
+  },
   data () {
     return {
       show: false,
@@ -84,6 +91,10 @@ export default {
     // 用户添加频道
     resetChannels (item) {
       // 将点击的频道添加到我的频道中
+      this.$set(item, 'articleList', [])
+      this.$set(item, 'loading', false)
+      this.$set(item, 'finished', false)
+      this.$set(item, 'isLoading', false)
       this.channelList.push(item)
       this.resetChanne()
     },

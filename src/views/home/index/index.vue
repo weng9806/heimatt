@@ -29,9 +29,10 @@
                   <div class="left">
                     <span>{{ articleitem.aut_name }}</span>
                     <span>{{ articleitem.comm_count }} 评论</span>
-                    <span>{{articleitem.pubdate}}</span>
+                    <span>{{ articleitem.pubdate | timePros }}</span>
                   </div>
-                  <div class="right">
+                  <div class="right"
+                       @click="openmore(articleitem)">
                     <van-icon name="cross" />
                   </div>
                 </div>
@@ -49,16 +50,21 @@
               :channelList="channelList"
               :active="active"
               @update:active="v=>active=v" />
+    <more ref="more"
+          :art_id="art_id"
+          @disLike="delDisLike" />
   </div>
 </template>
 
 <script>
-import { getChannelData, getArticleList } from '@/api/index'
+import { getChannelData, getArticleList, delArticleList } from '@/api/index'
 import { getLoacl } from '@/utils/mylocal.js'
 import Channels from './channels.vue'
+import more from './more.vue'
+import '@/filter/myfilter.js'
 export default {
   components: {
-    Channels
+    Channels, more
   },
   data () {
     return {
@@ -67,10 +73,35 @@ export default {
       loading: false,
       finished: false,
       isLoading: false,
-      channelList: []
+      channelList: [],
+      art_id: 0
     }
   },
   methods: {
+    async delDisLike (id) {
+      // 得到当前选中的频道下面的数据源
+      var datalist = this.channelList[this.active].articleList
+      // 遍历删除
+      datalist.forEach((item, index) => {
+        if (item.art_id === id) {
+          // 说明当前文章就是要删除的文章
+          datalist.splice(index, 1)
+        }
+      })
+      // 数据提交服务器
+      try {
+        await delArticleList(id)
+      } catch (error) {
+        window.console.log('出错了')
+      }
+      this.$refs.more.show = false
+    },
+    // 打开更多面板
+    openmore (articleitem) {
+      this.$refs.more.show = true
+      this.art_id = articleitem.art_id
+    },
+    // 打开弹出层面板
     openPop () {
       this.$refs.myChannels.show = true
     },
@@ -84,6 +115,7 @@ export default {
       if (res.data.data.results.length === 0 || currentChannel.articleList.length >= 80) {
         currentChannel.finished = true
       }
+      window.console.log(res.data.data.results)
     },
     onRefresh () {
       setTimeout(() => {

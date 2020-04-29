@@ -8,6 +8,10 @@ import Home from '@/views/home/home.vue'
 import Index from '@/views/home/index/index.vue'
 // 我的个人组件
 import My from '@/views/home/my/my.vue'
+// 搜索组件
+import Search from '@/views/home/search/search.vue'
+// 搜索结果组件
+import Searchresult from '@/views/home/searchResult/searchResult.vue'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -36,8 +40,16 @@ const router = new VueRouter({
         {
           path: 'my',
           component: My
+        },
+        {
+          path: 'search',
+          component: Search
         }
       ]
+    },
+    {
+      path: '/searchresult',
+      component: Searchresult
     }
   ]
 })
