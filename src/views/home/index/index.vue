@@ -52,6 +52,7 @@
               @update:active="v=>active=v" />
     <more ref="more"
           :art_id="art_id"
+          :aut_id="aut_id"
           @disLike="delDisLike" />
   </div>
 </template>
@@ -74,7 +75,8 @@ export default {
       finished: false,
       isLoading: false,
       channelList: [],
-      art_id: 0
+      art_id: 0,
+      aut_id: 0
     }
   },
   methods: {
@@ -100,6 +102,7 @@ export default {
     openmore (articleitem) {
       this.$refs.more.show = true
       this.art_id = articleitem.art_id
+      this.aut_id = articleitem.aut_id
     },
     // 打开弹出层面板
     openPop () {

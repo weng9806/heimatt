@@ -59,3 +59,13 @@ export function useReportArt ({ artId, id }) {
     }
   })
 }
+// 拉黑作者
+export function blockAuthor (id) {
+  return instance({
+    url: '/app/v1_0/user/blacklists',
+    method: 'post',
+    data: {
+      target: id
+    }
+  })
+}

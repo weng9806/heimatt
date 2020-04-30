@@ -11,7 +11,8 @@
                   title="反馈垃圾内容"
                   is-link />
         <van-cell icon="delete"
-                  title="拉黑作者" />
+                  title="拉黑作者"
+                  @click="block" />
       </van-cell-group>
       <van-cell-group v-else>
         <van-cell @click="report=false"
@@ -26,9 +27,9 @@
 </template>
 
 <script>
-import { useReportArt } from '@/api/index.js'
+import { useReportArt, blockAuthor } from '@/api/index.js'
 export default {
-  props: ['art_id'],
+  props: ['art_id', 'aut_id'],
   watch: {
     show (newV) {
       if (newV === false) {
@@ -54,6 +55,17 @@ export default {
     }
   },
   methods: {
+    // 拉黑作者
+    async block () {
+      try {
+        await blockAuthor(this.aut_id)
+        this.$toast.success('拉黑成功')
+      } catch (error) {
+        this.$toast.fail('拉黑失败')
+      }
+      this.show = false
+      this.report = false
+    },
     // 用户举报文章
     async resportUse (id) {
       try {

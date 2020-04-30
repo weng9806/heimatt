@@ -10,3 +10,15 @@ export function getThinkList (key) {
     }
   })
 }
+
+export function getSearchRes ({ page, perpage, key }) {
+  return instance({
+    url: '/app/v1_0/search',
+    method: 'GET',
+    params: {
+      page: page,
+      per_page: perpage,
+      q: key
+    }
+  })
+}
