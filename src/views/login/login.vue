@@ -61,7 +61,12 @@ export default {
           var res = await userlogin(this.form)
           // 用户信息存入localStorage 和 vuex 中
           this.$store.commit('setUserInfo', res.data.data)
-          this.$router.push('/home')
+          var path = this.$route.path
+          if (path === '/checklogin') {
+            this.$router.back()
+          } else {
+            this.$router.push('/home/index')
+          }
         } catch (error) {
           this.$toast.fail('登录失败')
         }

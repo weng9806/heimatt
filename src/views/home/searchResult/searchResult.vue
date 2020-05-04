@@ -10,7 +10,7 @@
               @load="onLoad">
       <van-cell-group v-for="(artitem, artindex) in searchResList"
                       :key="artindex">
-        <van-cell>
+        <van-cell @click="toInfo(artitem.art_id)">
           <template #title>
             <h3>{{ artitem.title }}</h3>
             <van-grid :border="false"
@@ -23,12 +23,13 @@
             </van-grid>
             <div class="info">
               <span>{{artitem.aut_name}}</span>
-              <span>{{artitem.comm_count}}</span>
+              <span>{{artitem.comm_count}} 评论</span>
               <span>{{artitem.pubdate | timePros}}</span>
             </div>
             <van-grid :column-num="3">
               <van-grid-item icon="comment-o"
-                             text="190" />
+                             text="190"
+                             @click="comment" />
               <van-grid-item icon="like-o"
                              text="点赞" />
               <van-grid-item text="分享">
@@ -51,20 +52,37 @@ export default {
     return {
       loading: false, // list组件加载状态
       finished: false, // list组件数据是否加载完毕
-      page: 1, // 定义页数
+      page: 0, // 定义页数
       perpage: 10, // 定义页容量
-      searchResList: [] // 搜索结果
+      searchResList: [], // 搜索结果
+      timeID: null
     }
   },
   methods: {
-    async onLoad () {
-      this.loading = false
-      var res = await getSearchRes({
-        page: this.page,
-        perpage: this.perpage,
-        key: this.$route.query.key
-      })
-      this.searchResList = res.data.data.results
+    // 跳往文章详情页
+    toInfo (id) {
+      this.$router.push('/detail?artid=' + id)
+    },
+    // 评论操作
+    comment () {
+      if (this.$login()) {
+        window.console.log('评论操作')
+      }
+    },
+    onLoad () {
+      clearTimeout(this.timeID)
+      this.timeID = setTimeout(async () => {
+        this.loading = false
+        var res = await getSearchRes({
+          page: this.page += 1,
+          perpage: this.perpage,
+          key: this.$route.query.key
+        })
+        this.searchResList = [...this.searchResList, ...res.data.data.results]
+        if (this.searchResList.length === 100 || res.data.data.results.length === 0) {
+          this.finished = true
+        }
+      }, 500)
     },
     // 返回上一页
     onClickLeft () {
