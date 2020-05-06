@@ -14,6 +14,8 @@ import Search from '@/views/home/search/search.vue'
 import Searchresult from '@/views/home/searchResult/searchResult.vue'
 // 文章详情组件
 import Detail from '@/views/detail/detail.vue'
+// 用户个人信息组件
+import PersonInfo from '@/views/home/my/personInfo/personInfo.vue'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -60,6 +62,10 @@ const router = new VueRouter({
     {
       path: '/detail',
       component: Detail
+    },
+    {
+      path: '/personInfo',
+      component: PersonInfo
     }
   ]
 })
