@@ -1,27 +1,43 @@
 <template>
   <div class="comment">
     <div class="img">
-      <img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3142697516,2723287000&fm=26&gp=0.jpg"
+      <img :src="item.aut_photo"
            alt="">
     </div>
     <div class="center">
-      <div>dsadasgasg</div>
-      <div>评论内容</div>
+      <div>{{item.aut_name}}</div>
+      <div>{{item.content}}</div>
       <div>
-        <span class="time">2 周前</span>
-        <span class="btn">回复1</span>
+        <span class="time">{{item.pubdate | timePros}}</span>
+        <span class="btn"
+              v-if="isreply === false"
+              @click="reply">回复 {{item.reply_count}}</span>
       </div>
     </div>
     <div class="right">
       <van-icon name="like"
-                class="icon" /> 1
+                class="icon" />{{item.like_count}}
     </div>
   </div>
 </template>
 
 <script>
+import bus from '@/utils/bus.js'
 export default {
+  props: ['item', 'isreply'],
+  data () {
+    return {
 
+    }
+  },
+  methods: {
+    reply () {
+      if (this.$login()) {
+        this.$emit('openreply', true)
+        bus.$emit('passItem', this.item)
+      }
+    }
+  }
 }
 </script>
 
@@ -29,7 +45,8 @@ export default {
 .comment {
   width: 100%;
   display: flex;
-  padding: 40px 12px 0;
+  margin-top: 10px;
+  margin-bottom: 50px;
   .img {
     img {
       width: 46px;

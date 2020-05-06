@@ -13,7 +13,8 @@
                     finished-text="-- 我是有底线的 --"
                     @load="onLoad">
             <van-cell v-for="(articleitem,articleindex) in item.articleList"
-                      :key="articleindex">
+                      :key="articleindex"
+                      @click="$router.push('/detail?artid=' +articleitem.art_id)">
               <template #title>
                 <h3>{{articleitem.title}}</h3>
                 <van-grid v-if="articleitem.cover.images.lenght!=0"

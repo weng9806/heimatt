@@ -10,7 +10,7 @@
               @load="onLoad">
       <van-cell-group v-for="(artitem, artindex) in searchResList"
                       :key="artindex">
-        <van-cell @click="toInfo(artitem.art_id)">
+        <van-cell @click="$router.push('/detail?artid=' +artitem.art_id)">
           <template #title>
             <h3>{{ artitem.title }}</h3>
             <van-grid :border="false"
@@ -29,7 +29,7 @@
             <van-grid :column-num="3">
               <van-grid-item icon="comment-o"
                              text="190"
-                             @click="comment" />
+                             @click.stop="comment" />
               <van-grid-item icon="like-o"
                              text="点赞" />
               <van-grid-item text="分享">
@@ -59,10 +59,6 @@ export default {
     }
   },
   methods: {
-    // 跳往文章详情页
-    toInfo (id) {
-      this.$router.push('/detail?artid=' + id)
-    },
     // 评论操作
     comment () {
       if (this.$login()) {
